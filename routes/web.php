@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\PlayerController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\App;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +18,21 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('main');
+    return view('home');
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/register', function () {
+    return view('register');
+});
+Route::get('/ranking', [PlayerController::class, 'ranking'])->name('ranking');
+
+Route::get('/lang/{locale}', function ($locale) {
+    if (!in_array($locale, ['de', 'en'])) {
+        abort(400);
+    }
+
+    App::setLocale($locale);
+});
