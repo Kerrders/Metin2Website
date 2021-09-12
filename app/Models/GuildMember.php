@@ -5,23 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Account extends Model
+class GuildMember extends Model
 {
     use HasFactory;
     /**
-     * @var array
+     * @var string
      */
-    protected $hidden = [
-        'password',
-    ];
+    protected $connection = 'mysqlPlayer';
 
     /**
      * @var string
      */
-    protected $connection = 'mysql';
+    protected $table = 'guild_member';
 
-    /**
-     * @var string
-     */
-    protected $table = 'account';
+    public function guild()
+    {
+        return $this->hasOne(Guild::class, 'id', 'guild_id');
+    }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -24,9 +25,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/register', function () {
-    return view('register');
-});
+Route::get('/register', [AccountController::class, 'register'])->name('register');
+Route::post('/register', [AccountController::class, 'create'])->name('createAccount');
 Route::get('/ranking', [PlayerController::class, 'ranking'])->name('ranking');
 
 Route::get('/lang/{locale}', function ($locale) {

@@ -17,4 +17,19 @@ class Player extends Model
      * @var string
      */
     protected $table = 'player';
+
+    public function account()
+    {
+        return $this->belongsTo(Account::class, 'id', 'account_id');
+    }
+
+    public function guildMember()
+    {
+        return $this->hasOne(GuildMember::class, 'pid', 'id');
+    }
+
+    public function playerIndex()
+    {
+        return $this->hasOne(PlayerIndex::class, 'id', 'account_id');
+    }
 }

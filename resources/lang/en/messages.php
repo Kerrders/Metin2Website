@@ -15,5 +15,11 @@ return [
 
     'topTenPlayersTitle' => 'Top 10 Players',
     'rankingTitle' => 'Ranking',
-
+    'rankingIndexTitle' => 'Order',
+    'rankingNameTitle' => 'Name',
+    'rankingLevelTitle' => 'Level',
+    'rankingGuildTitle' => 'Guild',
+    'rankingEmpireTitle' => 'Empire',
+    'rankingExpTitle' => 'Exp',
+    'noPlayersFound' => 'No players found on this page',
 ];

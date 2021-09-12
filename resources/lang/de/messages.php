@@ -15,5 +15,11 @@ return [
 
     'topTenPlayersTitle' => 'Top 10 Spieler',
     'rankingTitle' => 'Rangliste',
-
+    'rankingIndexTitle' => 'Platz',
+    'rankingNameTitle' => 'Name',
+    'rankingLevelTitle' => 'Level',
+    'rankingGuildTitle' => 'Gilde',
+    'rankingEmpireTitle' => 'Reich',
+    'rankingExpTitle' => 'Exp',
+    'noPlayersFound' => 'Es wurden keine Spieler auf dieser Seite gefunden',
 ];

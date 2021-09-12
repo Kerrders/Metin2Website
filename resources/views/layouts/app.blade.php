@@ -51,9 +51,9 @@
 				  <li class="nav-item active">
 					<a class="nav-link" href="#">Startseite</a>
 				  </li>
-				  <li class="nav-item"><a class="nav-link" href="#">Registration</a></li>
+				  <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Registration</a></li>
 				  <li class="nav-item"><a class="nav-link" href="#">Download</a></li>
-				  <li class="nav-item"><a class="nav-link" href="#">Rangliste</a></li>
+				  <li class="nav-item"><a class="nav-link" href="{{ route('ranking') }}">Rangliste</a></li>
 				  <li class="nav-item"><a class="nav-link" href="#">Forum</a></li>
 				  <li class="nav-item"><a class="nav-link" href="#">Vorstellung</a></li>
 				</ul>
@@ -193,11 +193,6 @@
 var current_fs, next_fs, previous_fs; //fieldsets
 var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
-$(document).on("submit", "#msform", function(e){
-    e.preventDefault();
-    alert('it works!');
-    return  false;
-});
 $(".next").click(function(){
 	if(animating) return false;
 	animating = true;
@@ -327,6 +322,6 @@ var validator =	$('#msform').validate({ // initialize the plugin
 		});
 			});	
 		</script>
-		<script type="text/javascript" src="assets/js/vanilla-tilt.min.js"></script>
+		<script type="text/javascript" src="{{ asset('assets/js/vanilla-tilt.min.js') }}"></script>
 	</body>
 </html>
