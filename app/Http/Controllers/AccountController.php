@@ -27,11 +27,12 @@ class AccountController extends Controller
     public function create(Request $request)
     {
         $data = $request->validate([
-            'name' => 'required|unique:posts|max:255',
+            'login' => 'required|unique:posts|max:16',
             'email' => 'required|string|email|max:255',
-            'password' => 'required|string|min:8',
+            'password' => 'required|string|confirmed|min:8|max:40',
+            'social_id' => 'required|number|min:7|max:7',
         ]);
-        dd($data);
+
         return Account::create([
             'login' => $data['login'],
             'password' => hash(MHASH_SHA256, $data['password']),

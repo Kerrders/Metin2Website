@@ -20,15 +20,15 @@
          </ul>
          <fieldset>
             <h4 class="fs-title">Account <i class="fas fa-user-circle"></i></h4>
-            <input type="text" name="account" placeholder="Account" maxlength="16" size="16"/><br>
-            <input type="password" name="pass" id="pass" placeholder="Passwort" maxlength="16" size="16"/><br>
-            <input type="password" name="pass2" id="pass2" placeholder="Passwort wiederholen" maxlength="16" size="16"/><br>
+            <input type="text" name="login" placeholder="Account" maxlength="16" size="16"/><br>
+            <input type="password" name="password" id="pass" placeholder="Passwort" maxlength="16" size="16"/><br>
+            <input type="password" name="password_confirmation" id="pass2" placeholder="Passwort wiederholen" maxlength="16" size="16"/><br>
             <input type="text" name="email" placeholder="E-Mail" maxlength="60"/><br><br>
             <button  class="next action-button">Next <i class="fas fa-chevron-circle-right"></i></button>
          </fieldset>
          <fieldset>
             <h4 class="fs-title">Sicherheit <i class="fas fa-lock"></i></h4>
-            <input type="text" name="loeschcode" placeholder="Löschcode" maxlength="7" size="7"/><br>
+            <input type="text" name="social_id" placeholder="Löschcode" maxlength="7" size="7"/><br>
             <button type="button" name="previous" class="previous action-button-previous"><i class="fas fa-chevron-circle-left"></i> Back</button>
             <button type="button" name="next" class="next action-button">Next <i class="fas fa-chevron-circle-right"></i></button>									
          </fieldset>
