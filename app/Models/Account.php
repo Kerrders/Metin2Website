@@ -24,4 +24,12 @@ class Account extends Model
      * @var string
      */
     protected $table = 'account';
+
+    /**
+     * Get players of account
+     */
+    public function players()
+    {
+        return $this->hasMany(Player::class, 'id', 'account_id');
+    }
 }

@@ -12,8 +12,10 @@ class PlayerController extends Controller
      */
     public function ranking()
     {
+        $results = Player::with(['guildMember.guild', 'playerIndex'])->orderBy('player.level', 'DESC')->orderBy('player.exp', 'DESC')->paginate(50);
         return view('ranking', [
-            'players' => Player::with(['guildMember.guild', 'playerIndex'])->orderBy('player.level', 'DESC')->orderBy('player.exp', 'DESC')->paginate(50)
+            'players' => $results,
+            'rank' => $results->firstItem()
         ]);
     }
 }

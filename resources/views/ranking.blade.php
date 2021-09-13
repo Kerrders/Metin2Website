@@ -18,7 +18,7 @@
          </tr>
          @foreach ($players as $player)
          <tr>
-            <td>{{ $loop->index+1 }}</td>
+            <td>{{ $rank++ }}</td>
             <td>{{ $player->name }}</td>
             <td>{{ $player->level }}</td>
             <td>{{ $player->guildMember->guild->name ?? '' }}</td>

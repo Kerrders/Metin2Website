@@ -18,6 +18,9 @@ class GuildMember extends Model
      */
     protected $table = 'guild_member';
 
+    /**
+     * Get guild
+     */
     public function guild()
     {
         return $this->hasOne(Guild::class, 'id', 'guild_id');
