@@ -27,7 +27,7 @@ class AccountController extends Controller
     public function create(Request $request)
     {
         $data = $request->validate([
-            'login' => 'required|unique:posts|max:16',
+            'login' => 'required|min:5|unique:accounts, login|max:16',
             'email' => 'required|string|email|max:255',
             'password' => 'required|string|confirmed|min:8|max:40',
             'social_id' => 'required|number|min:7|max:7',
