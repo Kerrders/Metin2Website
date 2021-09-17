@@ -18,9 +18,9 @@ use Illuminate\Support\Facades\App;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+//Route::get('/', function () {
+//    return view('home');
+//});
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/register', [AccountController::class, 'register'])->name('register');

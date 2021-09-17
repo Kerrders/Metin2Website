@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Account extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
+
+    protected $fillable = ['login', 'email', 'password', 'social_id'];
+
     /**
      * @var array
      */
