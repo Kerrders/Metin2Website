@@ -34,7 +34,7 @@ class AccountController extends Controller
 
         return Account::create([
             'login' => $data['login'],
-            'password' => hash('sha1', $data['password']),
+            'password' => hash('sha256', $data['password']),
             'email' => $data['email'],
             'social_id' => $data['social_id'],
         ]);

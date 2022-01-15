@@ -23,7 +23,7 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        $account = Account::where('login', '=', $data['login'])->where('password', '=', hash('sha1', $data['password']))->first();
+        $account = Account::where('login', '=', $data['login'])->where('password', '=', hash('sha256', $data['password']))->first();
         if(is_null($account) || Auth::loginUsingId($account->id, true)){
             return Redirect('home');
         }
