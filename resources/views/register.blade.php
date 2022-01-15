@@ -25,14 +25,10 @@
             <input type="password" name="password_confirmation" id="pass2" placeholder="Passwort wiederholen" maxlength="16" size="16"/><br>
             <input type="text" name="email" placeholder="E-Mail" maxlength="60"/><br><br>
             <button  class="next action-button">Next <i class="fas fa-chevron-circle-right"></i></button>
-         </fieldset>
-         <fieldset>
             <h4 class="fs-title">Sicherheit <i class="fas fa-lock"></i></h4>
             <input type="text" name="social_id" placeholder="Löschcode" maxlength="7" size="7"/><br>
             <button type="button" name="previous" class="previous action-button-previous"><i class="fas fa-chevron-circle-left"></i> Back</button>
-            <button type="button" name="next" class="next action-button">Next <i class="fas fa-chevron-circle-right"></i></button>									
-         </fieldset>
-         <fieldset>
+            <button type="button" name="next" class="next action-button">Next <i class="fas fa-chevron-circle-right"></i></button>
             <h4 class="fs-title">Captcha <i class="fas fa-shield-alt"></i></h4>
             <div class="captchaHolder">
                <div class="g-recaptcha" data-sitekey="6Lej_pAUAAAAALR5XZnnM8nch-TkxKDzEdig9-22"></div>

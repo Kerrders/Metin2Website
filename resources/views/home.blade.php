@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-Test
+@if (Auth::check())
+  Eingeloggt
+@else
+  Ausgeloggt
+@endif
 @endsection

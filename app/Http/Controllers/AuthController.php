@@ -22,11 +22,10 @@ class AuthController extends Controller
             'login' => 'required',
             'password' => 'required',
         ]);
-   
-        $account = Account::where('login', '=', $data['login'])->where('password', '=', hash('sha1', $data['password']))->first();
 
-        if(is_null($account) || Auth::loginUsingId($account->id)){
-            return redirect('home');
+        $account = Account::where('login', '=', $data['login'])->where('password', '=', hash('sha1', $data['password']))->first();
+        if(is_null($account) || Auth::loginUsingId($account->id, true)){
+            return Redirect('home');
         }
     }
 
@@ -39,7 +38,6 @@ class AuthController extends Controller
     {
         Session::flush();
         Auth::logout();
-  
         return Redirect('home');
     }
 }

@@ -28,14 +28,15 @@
 	<body>
 		<div id="loginModal">
 			<div class="login-wrapper">
-				<form>
+				<form method="POST" action="{{ route('login') }}">
+                  @csrf
 				  <div class="form-group">
-					<input type="text" placeholder="BENUTZERNAME">
+					<input type="text" name="login" placeholder="BENUTZERNAME">
 				  </div>
 				  <div class="form-group">
-					<input type="password" placeholder="PASSWORT">
+					<input type="password" name="password" placeholder="PASSWORT">
 				  </div>
-				  <input type="submit" value="EINLOGGEN"/>
+				  <input type="submit" name="submit" value="EINLOGGEN"/>
 				</form>
 				<div class="g-recaptcha" data-theme="dark" data-sitekey="6LehpH0UAAAAADGhoVeBj62006W6rw_rkNktoxDB" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;"></div>
 			</div>
@@ -199,12 +200,12 @@ $(".next").click(function(){
 
 	current_fs = $(this).parent();
 	next_fs = $(this).parent().next();
-	
+
 	//activate next step on progressbar using the index of next_fs
 	$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-	
+
 	//show the next fieldset
-	next_fs.show(); 
+	next_fs.show();
 	//hide the current fieldset with style
 	current_fs.animate({opacity: 0}, {
 		step: function(now, mx) {
@@ -220,12 +221,12 @@ $(".next").click(function(){
         'position': 'absolute'
       });
 			next_fs.css({'left': left, 'opacity': opacity});
-		}, 
-		duration: 800, 
+		},
+		duration: 800,
 		complete: function(){
 			current_fs.hide();
 			animating = false;
-		}, 
+		},
 		//this comes from the custom easing plugin
 		easing: 'easeInOutBack'
 	});
@@ -234,15 +235,15 @@ $(".next").click(function(){
 	$(".previous").click(function(){
 		if(animating) return false;
 		animating = true;
-		
+
 		current_fs = $(this).parent();
 		previous_fs = $(this).parent().prev();
-		
+
 		//de-activate current step on progressbar
 		$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
-		
+
 		//show the previous fieldset
-		previous_fs.show(); 
+		previous_fs.show();
 		//hide the current fieldset with style
 		current_fs.animate({opacity: 0}, {
 			step: function(now, mx) {
@@ -255,12 +256,12 @@ $(".next").click(function(){
 				opacity = 1 - now;
 				current_fs.css({'left': left});
 				previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
-			}, 
-			duration: 800, 
+			},
+			duration: 800,
 			complete: function(){
 				current_fs.hide();
 				animating = false;
-			}, 
+			},
 			//this comes from the custom easing plugin
 			easing: 'easeInOutBack'
 		});
@@ -289,29 +290,29 @@ var validator =	$('#msform').validate({ // initialize the plugin
                 minlength: 6,
 								maxlength: 16,
 								equalTo: "#pass"
-            },	
+            },
             email: {
                 required: true,
                 email: true,
-            },	
+            },
             loeschcode: {
                 required: true,
                 minlength: 7,
 								maxlength: 7,
-            },	
+            },
             sicherheitsa: {
                 required: true,
                 minlength: 3,
 								maxlength: 16,
-            },	
+            },
             // captcha: {
                 // required: true,
                 // minlength: 5,
 				// maxlength: 5,
 				// number: true,
-            // },			
-        },					
-    });			
+            // },
+        },
+    });
 		</script>
 	<script>
 			$( document ).ready(function() {
@@ -320,7 +321,7 @@ var validator =	$('#msform').validate({ // initialize the plugin
 			"ui-selectmenu-menu": "select-jquery"
 		}
 		});
-			});	
+			});
 		</script>
 		<script type="text/javascript" src="{{ asset('assets/js/vanilla-tilt.min.js') }}"></script>
 	</body>
