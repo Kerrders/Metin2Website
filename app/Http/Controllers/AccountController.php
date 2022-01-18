@@ -54,7 +54,7 @@ class AccountController extends Controller
             );
         }
 
-        return $account;
+        return Redirect('register')->with('success', 'Account successfully created');
     }
 
     /**
@@ -71,6 +71,6 @@ class AccountController extends Controller
             Cache::forget($id);
             return Redirect('home')->with('success', 'Verification: Account erfolgreich verifiziert');
         }
-        return Redirect('home')->with(['error' => 'Verification: The link is invalid']);
+        return Redirect('home')->with('error', 'Verification: The link is invalid');
     }
 }
