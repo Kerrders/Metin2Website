@@ -24,7 +24,11 @@ class AuthController extends Controller
         ]);
 
         $account = Account::where('login', '=', $data['login'])->where('password', '=', hash('sha256', $data['password']))->first();
-        if(is_null($account) || Auth::loginUsingId($account->id, true)){
+        if($account === null) {
+            return Redirect('home')->with('error', 'Account or password wrong');
+        }
+
+        if(Auth::loginUsingId($account->id, true)){
             return Redirect('home');
         }
     }
