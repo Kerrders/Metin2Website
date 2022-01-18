@@ -40,3 +40,6 @@ Route::get('lang/{locale}', function ($locale) {
 });
 
 Route::get('verify/{id}/{hash}', [AccountController::class, 'verifyEmail'])->name('verify');
+Route::get('/mailable', function () {
+    return new \App\Mail\LostPassword("Test", "Kalsm2103mal");
+});

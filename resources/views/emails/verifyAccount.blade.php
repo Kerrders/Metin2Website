@@ -1,7 +1,8 @@
 @component('mail::message')
 # Account verification
 
-The body of your message.
+Hello <b>{{ $name }}</b>, <br>
+Please confirm your new account
 
 @component('mail::button', ['url' => route('verify', ['id' => $id, 'hash' => $token])])
 Verify
