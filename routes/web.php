@@ -24,8 +24,14 @@ use Illuminate\Support\Facades\App;
 //});
 
 Route::get('home', [HomeController::class, 'index'])->name('home');
-Route::get('register', [AccountController::class, 'register'])->name('register');
+Route::get('register', function () {
+    return view('register');
+})->name('register');
 Route::post('register', [AccountController::class, 'create'])->name('createAccount');
+Route::get('lostpw', function () {
+    return view('lostpw');
+})->name('lostpw');
+Route::post('lostpw', [AccountController::class, 'resetPassword'])->name('resetPassword');
 Route::get('ranking', [PlayerController::class, 'ranking'])->name('ranking');
 
 Route::post('login', [AuthController::class, 'login'])->name('login');
