@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\AccountHelper;
 use Session;
 use App\Models\Account;
 use Illuminate\Http\Request;
@@ -23,7 +24,7 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        $account = Account::where('login', '=', $data['login'])->where('password', '=', hash('sha256', $data['password']))->first();
+        $account = Account::where('login', '=', $data['login'])->where('password', '=', AccountHelper::passwordHash($data['password']))->first();
         if($account === null) {
             return Redirect('home')->with('error', 'Account or password wrong');
         }

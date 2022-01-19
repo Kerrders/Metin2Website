@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\AccountHelper;
 use App\Mail\LostPassword;
 use App\Mail\VerifyAccount;
 use App\Models\Account;
@@ -31,7 +32,7 @@ class AccountController extends Controller
 
         $account = Account::create([
             'login' => $data['login'],
-            'password' => hash('sha256', $data['password']),
+            'password' => AccountHelper::passwordHash($data['password']),
             'email' => $data['email'],
             'social_id' => $data['social_id'],
             'status' => env('REGISTER_MAIL_VERIFICATION', true) ? 'VERIFY' : 'OK'
