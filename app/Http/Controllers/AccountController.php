@@ -89,7 +89,7 @@ class AccountController extends Controller
             return Redirect('lostpw')->with('error', 'User with the specific data not found');
         }
         $newPassword = Str::random(8);
-        $account->password = hash('sha256', $newPassword);
+        $account->password = AccountHelper::passwordHash($newPassword);
         $account->save();
 
         Mail::to($data['email'])->send(
@@ -97,5 +97,27 @@ class AccountController extends Controller
         );
 
         return Redirect('lostpw')->with('success', 'The new password was sent to you by e-mail');
+    }
+
+    /**
+     * Change password
+     * 
+     * @param Request $request
+     */
+    public function changePassword(Request $request)
+    {
+        $data = $request->validate([
+            'oldPassword' => 'required|string|min:8|max:40',
+            'password' => 'required|string|confirmed|min:8|max:40',
+        ]);
+
+        $account = Account::where('id', '=', Auth::id())->where('password', '=', AccountHelper::passwordHash($data['oldPassword']))->first();
+        if($account === null) {
+            return Redirect('password')->with('error', 'Wrong password');
+        }
+        $account->password = AccountHelper::passwordHash($data['password']);
+        $account->save();
+        
+        return Redirect('password')->with('success', 'Your password has been successfully changed');
     }
 }

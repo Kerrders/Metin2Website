@@ -46,6 +46,9 @@ Route::get('lang/{locale}', function ($locale) {
 });
 
 Route::get('verify/{id}/{hash}', [AccountController::class, 'verifyEmail'])->name('verify');
-Route::get('/mailable', function () {
-    return new \App\Mail\LostPassword("Test", "Kalsm2103mal");
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('password', function () {
+        return view('password');
+    })->name('password');
+    Route::post('password', [AccountController::class, 'changePassword']);
 });
