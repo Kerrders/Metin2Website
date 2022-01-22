@@ -6,23 +6,7 @@
       Lost password
    </div>
    <div class="card-body">
-      @if($errors->any())
-        <div class="alert alert-primary" role="alert">
-        {!! implode('', $errors->all('<div>:message</div>')) !!}
-        </div>
-      @endif
-      @if (\Session::has('success'))
-         <div class="alert alert-success alert-dismissible fade show" role="alert">
-         {{ \Session::get('success') }}
-         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-         </div>
-      @endif
-      @if (\Session::has('error'))
-         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-         {{ \Session::get('error') }}
-         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-         </div>
-      @endif
+      @include('widgets.alerts')
       <form method="POST" action="{{ route('lostpw') }}">
          @csrf
          <fieldset>
