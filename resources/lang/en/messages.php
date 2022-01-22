@@ -24,9 +24,16 @@ return [
     'rankingExpTitle' => 'Exp',
     'noPlayersFound' => 'No players found on this page',
 
+    // Register
+    'registerTitle' => 'Registrieren',
+
     // Forms
     'accountInput' => 'Account',
     'emailInput' => 'E-Mail',
+    'passwordInput' => 'Password',
+    'repeatPasswordInput' => 'Repeat password',
+    'deletionCode' => 'Deletion code',
+    'registerButton' => 'Register',
 
     // Reset password page
     'lostPwTitle' => 'Lost password',
