@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 
 class AccountController extends Controller
 {
@@ -47,7 +46,7 @@ class AccountController extends Controller
             );
         }
 
-        return Redirect('register')->with('success', 'Account successfully created');
+        return Redirect('register')->with('success', __('messages.responseAccountCreated'));
     }
 
     /**
@@ -60,7 +59,7 @@ class AccountController extends Controller
     {
         $token = Cache::get($id);
         if($token === null || $token !== $hash) {
-            return Redirect('home')->with('error', 'Verification: The link is invalid');
+            return Redirect('home')->with('error', __('messages.responseValidationWrong'));
         }
 
         $account = Account::find($id);
@@ -69,7 +68,7 @@ class AccountController extends Controller
         Auth::loginUsingId($account->id, true);
         Cache::forget($id);
 
-        return Redirect('home')->with('success', 'Verification: Account erfolgreich verifiziert');
+        return Redirect('home')->with('success', __('messages.responseValidationSuccesfully'));
     }
 
     /**
@@ -86,7 +85,7 @@ class AccountController extends Controller
 
         $account = Account::where('login', '=', $data['login'])->where('email', '=', $data['email'])->first();
         if($account === null) {
-            return Redirect('lostpw')->with('error', 'User with the specific data not found');
+            return Redirect('lostpw')->with('error',  __('messages.responseUserNotFound'));
         }
         $newPassword = Str::random(8);
         $account->password = AccountHelper::passwordHash($newPassword);
@@ -96,7 +95,7 @@ class AccountController extends Controller
             (new LostPassword($account->login, $newPassword))->afterCommit()
         );
 
-        return Redirect('lostpw')->with('success', 'The new password was sent to you by e-mail');
+        return Redirect('lostpw')->with('success', __('messages.responseLostPwEmailSent'));
     }
 
     /**
@@ -113,11 +112,11 @@ class AccountController extends Controller
 
         $account = Account::where('id', '=', Auth::id())->where('password', '=', AccountHelper::passwordHash($data['oldPassword']))->first();
         if($account === null) {
-            return Redirect('password')->with('error', 'Wrong password');
+            return Redirect('password')->with('error', __('messages.responseWrongPassword'));
         }
         $account->password = AccountHelper::passwordHash($data['password']);
         $account->save();
         
-        return Redirect('password')->with('success', 'Your password has been successfully changed');
+        return Redirect('password')->with('success', __('messages.responsePasswordChanged'));
     }
 }
