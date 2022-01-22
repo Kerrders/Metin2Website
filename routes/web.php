@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Cookie;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,8 +42,10 @@ Route::get('lang/{locale}', function ($locale) {
     if (!in_array($locale, ['de', 'en'])) {
         abort(400);
     }
-
+    
+    Cookie::queue('lang', $locale, 60*60*24*365);
     App::setLocale($locale);
+    return Redirect('home');
 });
 
 Route::get('verify/{id}/{hash}', [AccountController::class, 'verifyEmail'])->name('verify');
