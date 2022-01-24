@@ -51,7 +51,7 @@ class AccountController extends Controller
 
     /**
      * Verify e-mail of account
-     * 
+     *
      * @param int $id
      * @param string $hash
      */
@@ -73,7 +73,7 @@ class AccountController extends Controller
 
     /**
      * Reset password
-     * 
+     *
      * @param Request $request
      */
     public function resetPassword(Request $request)
@@ -100,7 +100,7 @@ class AccountController extends Controller
 
     /**
      * Change password
-     * 
+     *
      * @param Request $request
      */
     public function changePassword(Request $request)
@@ -116,7 +116,7 @@ class AccountController extends Controller
         }
         $account->password = AccountHelper::passwordHash($data['password']);
         $account->save();
-        
+
         return Redirect('password')->with('success', __('messages.responsePasswordChanged'));
     }
 }
