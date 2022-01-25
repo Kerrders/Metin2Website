@@ -15,6 +15,9 @@
             <input class="form-control" type="password" name="password_confirmation" id="pass2" placeholder="@lang('messages.repeatPasswordInput')" maxlength="16" size="16"/><br>
             <input class="form-control" type="text" name="email" placeholder="@lang('messages.emailInput')" maxlength="60"/><br>
             <input class="form-control" type="text" name="social_id" placeholder="@lang('messages.deletionCode')" maxlength="7" size="7"/><br>
+            {!! ReCaptcha::htmlFormSnippet([
+                "theme" => "dark",
+            ]) !!} <br>
             <div class="d-grid col-6 mx-auto">
                <input type="submit" name="submit" class="btn btn-primary" value="@lang('messages.registerButton')"/>
             </div>

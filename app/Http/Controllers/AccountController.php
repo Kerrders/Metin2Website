@@ -27,6 +27,7 @@ class AccountController extends Controller
             'password' => 'required|string|confirmed|min:8|max:40',
             'social_id' => 'required|numeric|digits:7',
             'login' => 'required|min:5|unique:account,login|max:16',
+            'g-recaptcha-response' => 'recaptcha',
         ]);
 
         $account = Account::create([
@@ -81,6 +82,7 @@ class AccountController extends Controller
         $data = $request->validate([
             'email' => 'required|string|email|max:255',
             'login' => 'required|min:5|max:16',
+            'g-recaptcha-response' => 'recaptcha',
         ]);
 
         $account = Account::where('login', '=', $data['login'])->where('email', '=', $data['email'])->first();

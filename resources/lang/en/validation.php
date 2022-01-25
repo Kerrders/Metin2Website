@@ -154,5 +154,5 @@ return [
     */
 
     'attributes' => [],
-
+    'recaptcha' => 'Wrong Captcha',
 ];

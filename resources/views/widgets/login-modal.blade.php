@@ -14,6 +14,11 @@
                 <div class="mb-3">
                   <input type="password" class="form-control" placeholder="Password" name="password">
                 </div>
+                <div class="mb-3">
+                    {!! ReCaptcha::htmlFormSnippet([
+                        "theme" => "dark",
+                    ]) !!}
+                </div>
                 <div class="d-grid col-6 mx-auto">
                     <input type="submit" name="submit" class="btn btn-primary" value="Login"/>
                  </div>

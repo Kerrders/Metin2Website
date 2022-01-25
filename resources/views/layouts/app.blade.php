@@ -7,6 +7,7 @@
 
 	<meta name="color-scheme" content="dark">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap-dark-5@1.1.3/dist/css/bootstrap-nightshade.min.css" rel="stylesheet">
+	{!! ReCaptcha::htmlScriptTagJsApi() !!}
 
     <title>Arkania</title>
 	</head>

@@ -22,6 +22,7 @@ class AuthController extends Controller
         $data = $request->validate([
             'login' => 'required',
             'password' => 'required',
+            'g-recaptcha-response' => 'recaptcha',
         ]);
 
         $account = Account::where('login', '=', $data['login'])->where('password', '=', AccountHelper::passwordHash($data['password']))->first();
