@@ -3,19 +3,34 @@
 namespace App\Http\Controllers;
 
 use App\Models\Player;
-use Illuminate\Http\Request;
 
 class PlayerController extends Controller
 {
-    /** 
+    /**
      * Player ranking
      */
     public function ranking()
     {
-        $results = Player::with(['guildMember.guild', 'playerIndex'])->orderBy('player.level', 'DESC')->orderBy('player.exp', 'DESC')->paginate(50);
+        $results = $this->getRankingQuery()->paginate(50);
         return view('ranking', [
             'players' => $results,
             'rank' => $results->firstItem()
         ]);
+    }
+
+    /**
+     * Top player ranking
+     */
+    public function topPlayers()
+    {
+        return $this->getRankingQuery()->limit(5)->get();
+    }
+
+    /**
+     * Get ranking query
+     */
+    private function getRankingQuery()
+    {
+        return Player::with(['guildMember.guild', 'playerIndex'])->orderBy('player.level', 'DESC')->orderBy('player.exp', 'DESC');
     }
 }
