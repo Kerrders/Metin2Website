@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\AccountHelper;
-use Session;
 use App\Models\Account;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
@@ -26,11 +26,19 @@ class AuthController extends Controller
         ]);
 
         $account = Account::where('login', '=', $data['login'])->where('password', '=', AccountHelper::passwordHash($data['password']))->first();
-        if($account === null) {
+        if ($account === null) {
             return Redirect('home')->with('error', 'Account or password wrong');
         }
 
-        if(Auth::loginUsingId($account->id, true)){
+        if ($account->status === 'VERIFY') {
+            return Redirect('home')->with('error', 'You need to verify your account');
+        }
+
+        if ($account->status !== 'OK') {
+            return Redirect('home')->with('error', 'You are not allowed to log in');
+        }
+
+        if (Auth::loginUsingId($account->id, true)) {
             return Redirect('home');
         }
     }
