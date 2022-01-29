@@ -47,4 +47,7 @@ return [
     'responseAccountCreated' => 'Account successfully created',
     'responseValidationWrong' => 'Verification: The link is invalid',
     'responseValidationSuccesfully' => 'Verification: Account successfully validated',
+    'responseNeedVerifiedAccount' => 'You need to confirm your account',
+    'responseWrongAccountOrPassword' => 'Wrong account or password',
+    'responseWrongLoginStatus' => 'You are not allowed to log in',
 ];

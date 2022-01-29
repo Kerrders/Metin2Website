@@ -47,4 +47,8 @@ return [
     'responseAccountCreated' => 'Dein Account wurde erfolgreich angelegt',
     'responseValidationWrong' => 'Bestätigung: Der angegebene Link ist fehlerhaft',
     'responseValidationSuccesfully' => 'Bestätigung: Account erfolgreich verifiziert',
+    'responseNeedVerifiedAccount' => 'Du musst deinen Account bestätigen',
+    'responseWrongAccountOrPassword' => 'Falscher Account oder falsches Passwort',
+    'responseWrongLoginStatus' => 'Sie dürfen sich nicht anmelden',
+
 ];
