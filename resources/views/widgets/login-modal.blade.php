@@ -6,6 +6,21 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+            @if (\Session::has('loginError'))
+                @php
+                    $loginErrors = \Session::get('loginError')
+                @endphp
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    @if (is_array($loginErrors))
+                        @foreach ($loginErrors as $error)
+                            {{ $error }} <br>
+                        @endforeach
+                    @else
+                        {{ $loginErrors }}
+                    @endif
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="mb-3">
@@ -27,3 +42,11 @@
       </div>
     </div>
   </div>
+@section('javascript')
+    @if (\Session::has('loginError'))
+        <script>
+            let loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+            loginModal.show();
+        </script>
+    @endif
+@endsection
