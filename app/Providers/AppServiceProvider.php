@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,6 +28,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Paginator::useBootstrap();
+
         /**
          * Multilingualism logic
          */
@@ -41,7 +44,6 @@ class AppServiceProvider extends ServiceProvider
         /**
          * Data for widgets
          */
-
         /** @var PlayerController $playerController */
         $playerController = App(PlayerController::class);
         view()->share('topPlayers', $playerController->topPlayers());
