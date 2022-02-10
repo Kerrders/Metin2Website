@@ -17,3 +17,4 @@ Bootstrap 5
  - Lost Password
  - Login
  - Player data cached
+ - Multilingualism
